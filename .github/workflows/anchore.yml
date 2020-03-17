@@ -1,0 +1,17 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build debian image
+      run: docker build -f base/Dockerfile -t srijanlabs/debian:latest .
+    - name: Scan debian image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/debian:latest"
+        dockerfile-path: "base/Dockerfile"
+        fail-build: true
