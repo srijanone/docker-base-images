@@ -1,8 +1,6 @@
 ARG TAG=1.x
-FROM srijanlabs/base:${TAG}
 
-RUN groupadd --gid 1001 node \
-  && useradd --uid 1001 --gid node --shell /bin/bash --create-home node
+FROM srijanlabs/base:${TAG}
 
 ARG NODE_VERSION=12.16.0
 
