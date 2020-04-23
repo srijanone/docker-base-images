@@ -23,7 +23,10 @@ WORKDIR /app
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ca-certificates=${CA_VER} lsb-release apt-transport-https
+    ca-certificates=${CA_VER} \
+    lsb-release \
+    apt-transport-https \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://packages.sury.org/php/apt.gpg | apt-key add - \
     && curl -fsSL https://download.newrelic.com/548C16BF.gpg | apt-key add - \
