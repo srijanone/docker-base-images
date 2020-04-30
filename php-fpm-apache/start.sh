@@ -2,19 +2,19 @@
 
 # Start the first process
 # ./my_first_process -D
-php-fpm -F
+apache2ctl -D FOREGROUND
 status=$?
 if [ $status -ne 0 ]; then
-  echo "Failed to start my_first_process: $status"
+  echo "Failed to start my_second_process: $status"
   exit $status
 fi
 
 # Start the second process
 # ./my_second_process -D
-apache2ctl -D FOREGROUND
+php-fpm -F
 status=$?
 if [ $status -ne 0 ]; then
-  echo "Failed to start my_second_process: $status"
+  echo "Failed to start my_first_process: $status"
   exit $status
 fi
 
