@@ -23,7 +23,8 @@ EXPOSE 8080
 RUN mkdir /var/run/apache2 \
     && chown -R continua:continua /var/run/apache2 \
     && chmod -R 0777 /var/tmp \
-    && chown -R continua:continua /var/log
+    && chown -R continua:continua /var/log \
+    && setcap cap_net_bind_service=+epi /usr/sbin/apache2ctl
     
 USER continua
 
