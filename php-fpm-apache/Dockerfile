@@ -1,6 +1,7 @@
 ARG PHP_TAG
 FROM srijanlabs/php-fpm:${PHP_TAG}
 
+ENV CA_VERSION=20190110
 
 USER root
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
