@@ -16,6 +16,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ports.conf /etc/apache2/ports.conf
+COPY start.sh /usr/local/bin/start.sh
 
 EXPOSE 8080
 
@@ -26,4 +27,4 @@ RUN mkdir /var/run/apache2 \
     
 USER continua
 
-CMD apache2ctl -D FOREGROUND
+CMD start.sh
