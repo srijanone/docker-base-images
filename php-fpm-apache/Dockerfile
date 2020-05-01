@@ -12,6 +12,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && a2enmod proxy_fcgi \
     && rm -rf /var/lib/apt/lists/*
 
+COPY start.sh /usr/local/bin/start.sh
 
 # Apache configurations
 COPY app.conf /etc/apache2/sites-enabled/000-default.conf
