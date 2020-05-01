@@ -28,6 +28,4 @@ RUN mkdir /var/run/apache2 \
     && chown -R continua:continua /etc/apache2 \
     && chown -R continua:continua /var/lib/apache2
 
-ENV PHP_HOST localhost
-
 USER continua
