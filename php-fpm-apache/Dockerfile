@@ -15,6 +15,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
 
 # Apache configurations
 COPY app.conf /etc/apache2/sites-enabled/000-default.conf
+COPY envvars /etc/apache2/envvars
 COPY ports.conf /etc/apache2/ports.conf
 
 EXPOSE 8080
