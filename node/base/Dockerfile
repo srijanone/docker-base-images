@@ -1,6 +1,6 @@
-ARG TAG=1.x
+ARG BASE_TAG=1.x
 
-FROM srijanlabs/base:${TAG}
+FROM srijanlabs/base:${BASE_TAG}
 
 ARG NODE_VERSION=12.16.0
 
