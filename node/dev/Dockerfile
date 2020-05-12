@@ -7,7 +7,7 @@ ARG NODE_VERSION=12.16.0
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008
-RUN buildDeps=('ca-certificates=20190110' 'xz-utils=5.2.4-1' 'gnupg=2.2.12-1+deb10u1' 'git=1:2.20.1-2+deb10u1') \
+RUN buildDeps=('ca-certificates=20190110' 'xz-utils=5.2.4-1' 'gnupg=2.2.12-1+deb10u1' 'git=1:2.20.1-2+deb10u3') \
     && ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && case "${dpkgArch##*-}" in \
       amd64) ARCH="x64";; \

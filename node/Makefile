@@ -8,7 +8,7 @@ define build_image
 	docker build --no-cache --build-arg BASE_TAG=${BASE_TAG} --build-arg NODE_VERSION=${1} -t $(REGISTRY):${1}-${BASE_TAG} base
 
 	# Building dev images.
-	docker build --no-cache --build-arg BASE_TAG=${BASE_TAG} --build-arg NODE_VERSION=${1} --build-arg IMAGE=$(REGISTRY):${1}-1.x -t $(REGISTRY):${1}-${BASE_TAG}-dev dev
+	docker build --no-cache --build-arg BASE_TAG=${BASE_TAG} --build-arg NODE_VERSION=${1} -t $(REGISTRY):${1}-${BASE_TAG}-dev dev
 
 endef
 
