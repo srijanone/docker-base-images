@@ -5,7 +5,6 @@ name: Docker Image CI
 #   schedule:
 #     - cron: '0 0 * * *'
 
-
 on: [push]
 
 jobs:
@@ -20,4 +19,12 @@ jobs:
       with:
         image-reference: "srijanlabs/debian:latest"
         dockerfile-path: "base/Dockerfile"
+        fail-build: true
+    - name: Build apache image
+      run: docker build -f apache/Dockerfile -t srijanlabs/apache:latest .
+    - name: Scan apache image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/apache:latest"
+        dockerfile-path: "apache/Dockerfile"
         fail-build: true
