@@ -1,9 +1,11 @@
 name: Docker Image CI
 
-on:
-  # Run every midnight.
-  schedule:
-    - cron: '0 0 * * *'
+# on:
+#   # Run every midnight.
+#   schedule:
+#     - cron: '0 0 * * *'
+
+on: [push]
 
 jobs:
   build:
