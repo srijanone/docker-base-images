@@ -6,7 +6,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     php${PHP_VERSION}-fpm \
     # This is clunky :).
-    && ln -sf /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm
+    && ln -sf /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY conf.d/50_fpm.ini /etc/php/${PHP_VERSION}/conf.d/50_fpm.ini
 COPY php-fpm.conf /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
@@ -14,6 +15,8 @@ COPY php-fpm.conf /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
 EXPOSE 9000
 
 USER continua
+
+ENV PATH=/app/vendor/bin:$PATH
 
 ENV PHP_FPM_PORT=9000 \
     PHP_FPM_MAX_CHILDREN=20 \
