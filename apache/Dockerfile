@@ -18,7 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && a2enmod proxy_fcgi \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ports.conf /etc/apache2/ports.conf
+COPY apache/ports.conf /etc/apache2/ports.conf
 
 EXPOSE 8080
 
