@@ -1,15 +1,18 @@
 name: Docker Image CI
 
-on:
-  # Run every midnight.
-  schedule:
-    - cron: '0 0 * * *'
+# on:
+#   # Run every midnight.
+#   schedule:
+#     - cron: '0 0 * * *'
+
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    # BASE DEBIAN.
     - name: Build debian image
       run: docker build -f base/Dockerfile -t srijanlabs/debian:latest .
     - name: Scan debian image
@@ -18,6 +21,7 @@ jobs:
         image-reference: "srijanlabs/debian:latest"
         dockerfile-path: "base/Dockerfile"
         fail-build: true
+    # APCHE.
     - name: Build apache image
       run: docker build -f apache/Dockerfile -t srijanlabs/apache:latest .
     - name: Scan apache image
@@ -26,4 +30,39 @@ jobs:
         image-reference: "srijanlabs/apache:latest"
         dockerfile-path: "apache/Dockerfile"
         fail-build: true
-
+    # PHP BASE.
+    - name: Build PHP Base image
+      run: docker build -f php/base/Dockerfile -t srijanlabs/php:7.2-1.x .
+    - name: Scan PHP Base image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php:7.2-1.x"
+        dockerfile-path: "php/base/Dockerfile"
+        fail-build: true
+    # PHP CLI.
+    - name: Build PHP CLI image
+      run: docker build -f php/cli/Dockerfile -t srijanlabs/php:cli .
+    - name: Scan PHP CLI image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php:cli"
+        dockerfile-path: "php/cli/Dockerfile"
+        fail-build: true
+    # PHP DEV.
+    - name: Build PHP DEV image
+      run: docker build -f php/dev/Dockerfile -t srijanlabs/php:dev .
+    - name: Scan PHP DEV image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php:dev"
+        dockerfile-path: "php/dev/Dockerfile"
+        fail-build: true
+    # PHP FPM.
+    - name: Build PHP FPM image
+      run: docker build -f php/fpm/Dockerfile -t srijanlabs/php:fpm .
+    - name: Scan PHP FPM image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php:fpm"
+        dockerfile-path: "php/fpm/Dockerfile"
+        fail-build: true

@@ -8,8 +8,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     # This is clunky :).
     && ln -sf /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm
 
-COPY conf.d/50_fpm.ini /etc/php/${PHP_VERSION}/conf.d/50_fpm.ini
-COPY php-fpm.conf /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
+COPY php/fpm/conf.d/50_fpm.ini /etc/php/${PHP_VERSION}/conf.d/50_fpm.ini
+COPY php/fpm/php-fpm.conf /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
 
 EXPOSE 9000
 
