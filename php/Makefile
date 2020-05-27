@@ -10,7 +10,6 @@ define build_image
 
 	# Building dev images.
 	docker build --no-cache --build-arg PHP_VERSION=${1} --build-arg IMAGE=$(REGISTRY)-fpm:${1}-1.x -t $(REGISTRY)-fpm:${1}-1.x-dev dev
-	docker build --no-cache --build-arg PHP_VERSION=${1} --build-arg IMAGE=$(REGISTRY)-cli:${1}-1.x -t $(REGISTRY)-cli:${1}-1.x-dev dev
 
 endef
 
