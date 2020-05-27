@@ -1,11 +1,9 @@
 name: Docker Image CI
 
-# on:
-#   # Run every midnight.
-#   schedule:
-#     - cron: '0 0 * * *'
-
-on: [push]
+on:
+  # Run every midnight.
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   build:
@@ -28,3 +26,4 @@ jobs:
         image-reference: "srijanlabs/apache:latest"
         dockerfile-path: "apache/Dockerfile"
         fail-build: true
+
