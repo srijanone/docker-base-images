@@ -17,6 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ports.conf /etc/apache2/ports.conf
+COPY envvars /etc/apache2/envvars
 
 EXPOSE 8080
 
