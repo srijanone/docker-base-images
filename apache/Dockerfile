@@ -27,4 +27,6 @@ RUN mkdir /var/run/apache2 \
     && chown -R continua:continua /etc/apache2 \
     && chown -R continua:continua /var/lib/apache2
 
+USER continua
+
 CMD [ "apache2ctl", "-D", "FOREGROUND"]
