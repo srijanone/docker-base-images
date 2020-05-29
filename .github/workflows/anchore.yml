@@ -22,7 +22,7 @@ jobs:
         fail-build: true
     # apache
     - name: Build apache image
-      run: docker build -f apache/Dockerfile -t srijanlabs/apache:latest apache/Dockerfile
+      run: docker build -f apache/Dockerfile -t srijanlabs/apache:latest apache
     - name: Scan apache image
       uses: anchore/scan-action@master
       with:
@@ -31,7 +31,7 @@ jobs:
         fail-build: true
     # php-base
     - name: Build php image
-      run: docker build -f php/base/Dockerfile -t srijanlabs/php:latest php/base/Dockerfile
+      run: docker build -f php/base/Dockerfile -t srijanlabs/php:latest php/base
     - name: Scan php image
       uses: anchore/scan-action@master
       with:
@@ -40,7 +40,7 @@ jobs:
         fail-build: true
     # php-cli
     - name: Build php-cli image
-      run: docker build -f php/cli/Dockerfile -t srijanlabs/php-cli:latest php/cli/Dockerfile
+      run: docker build -f php/cli/Dockerfile -t srijanlabs/php-cli:latest php/cli
     - name: Scan php-cli image
       uses: anchore/scan-action@master
       with:
@@ -49,7 +49,7 @@ jobs:
         fail-build: true
     # php-dev
     - name: Build php-dev image
-      run: docker build -f php/dev/Dockerfile -t srijanlabs/php-dev:latest php/dev/Dockerfile
+      run: docker build -f php/dev/Dockerfile -t srijanlabs/php-dev:latest php/dev
     - name: Scan php-cli image
       uses: anchore/scan-action@master
       with:
@@ -58,7 +58,7 @@ jobs:
         fail-build: true
     # php-fpm
     - name: Build php-fpm image
-      run: docker build -f php/fpm/Dockerfile -t srijanlabs/php-fpm:latest php/fpm/Dockerfile
+      run: docker build -f php/fpm/Dockerfile -t srijanlabs/php-fpm:latest php/fpm
     - name: Scan php-fpm image
       uses: anchore/scan-action@master
       with:
