@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    # debian
     - name: Build debian image
       run: docker build -f base/Dockerfile -t srijanlabs/debian:latest .
     - name: Scan debian image
@@ -17,4 +18,49 @@ jobs:
       with:
         image-reference: "srijanlabs/debian:latest"
         dockerfile-path: "base/Dockerfile"
+        fail-build: true
+    # apache
+    - name: Build apache image
+      run: docker build -f apache/Dockerfile -t srijanlabs/apache:latest apache/Dockerfile
+    - name: Scan apache image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/apache:latest"
+        dockerfile-path: "apache/Dockerfile"
+        fail-build: true
+    # php-base
+    - name: Build php image
+      run: docker build -f php/base/Dockerfile -t srijanlabs/php:latest php/base/Dockerfile
+    - name: Scan php image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php:latest"
+        dockerfile-path: "php/base/Dockerfile"
+        fail-build: true
+    # php-cli
+    - name: Build php-cli image
+      run: docker build -f php/cli/Dockerfile -t srijanlabs/php-cli:latest php/cli/Dockerfile
+    - name: Scan php-cli image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php-cli:latest"
+        dockerfile-path: "php/cli/Dockerfile"
+        fail-build: true
+    # php-dev
+    - name: Build php-dev image
+      run: docker build -f php/dev/Dockerfile -t srijanlabs/php-dev:latest php/dev/Dockerfile
+    - name: Scan php-cli image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php:dev"
+        dockerfile-path: "php/dev/Dockerfile"
+        fail-build: true
+    # php-fpm
+    - name: Build php-fpm image
+      run: docker build -f php/fpm/Dockerfile -t srijanlabs/php-fpm:latest php/fpm/Dockerfile
+    - name: Scan php-fpm image
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php-fpm:latest"
+        dockerfile-path: "php/fpm/Dockerfile"
         fail-build: true
