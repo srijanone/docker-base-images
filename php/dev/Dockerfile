@@ -15,8 +15,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get('extension_dir');")/blackfire.so \
     && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
 
-COPY conf.d/01_blackfire.ini /etc/php/conf.d/01_blackfire.ini
-COPY conf.d/50_dev.ini /etc/php/conf.d/50_dev.ini
-COPY conf.d/01_xdebug.ini /etc/php/conf.d/01_xdebug.ini
+COPY conf.d/01_blackfire.ini /etc/php/${PHP_VERSION}/fpm/conf.d/01_blackfire.ini
+COPY conf.d/50_dev.ini /etc/php/${PHP_VERSION}/fpm/conf.d/50_dev.ini
+COPY conf.d/01_xdebug.ini /etc/php/${PHP_VERSION}/fpm/conf.d/01_xdebug.ini
 
 USER continua
