@@ -4,7 +4,6 @@ on:
   # Run every midnight.
   schedule:
     - cron: '0 0 * * *'
-  pull_request:
 
 jobs:
   build:
@@ -53,7 +52,7 @@ jobs:
     - name: Scan php-cli image
       uses: anchore/scan-action@master
       with:
-        image-reference: "srijanlabs/php:dev"
+        image-reference: "srijanlabs/php-dev:latest"
         dockerfile-path: "php/dev/Dockerfile"
         fail-build: true
     # php-fpm
