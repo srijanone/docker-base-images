@@ -2,6 +2,8 @@ name: CI
 
 on:
   push:
+    branches: 
+      - dev
   pull_request:
 
 jobs:
@@ -13,6 +15,7 @@ jobs:
         uses: "docker://cdssnc/docker-lint-github-action"
   build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     steps:
     - uses: actions/checkout@v2
     - name: Login to Docker Registry
