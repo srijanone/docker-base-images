@@ -7,7 +7,7 @@ ARG PHP_VERSION=7.2
 USER root
 
 # commands are sfe from word splitting and expecting latest version
-# hadolint ignore=DL2046,DL3008
+# hadolint ignore=SC2046,DL3008
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     php${PHP_VERSION}-xdebug \
