@@ -2,6 +2,8 @@ ARG PHP_VERSION=7.2
 FROM srijanlabs/php:${PHP_VERSION}-1.x
 ARG PHP_VERSION=7.2
 
+# Expecting latest version
+# hadolint ignore=DL3008
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     php${PHP_VERSION}-fpm \
