@@ -1,11 +1,11 @@
 FROM debian:buster-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    procps \
-    openssl \
-    vim \
-    gnupg2 \
+    curl=7.64.0-4+deb10u1 \
+    procps=2:3.3.15-2 \
+    openssl=1.1.1d-0+deb10u3 \
+    vim=2:8.1.0875-5 \
+    gnupg2=2.2.12-1+deb10u1 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -u 1000 continua

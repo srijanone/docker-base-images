@@ -10,7 +10,6 @@ ENV PHP_MEMORY_LIMIT=128M
 
 ENV SYSLOG_SYMLINK=/mnt/syslog/log
 
-ENV CA_VER=20190110
 
 ENV MYSQL_CLIENT_VER=1.0.5
 
@@ -23,11 +22,14 @@ WORKDIR /app
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ca-certificates=${CA_VER} \
-    lsb-release \
-    apt-transport-https \
+    ca-certificates=20190110 \
+    lsb-release=10.2019051400 \
+    apt-transport-https=1.8.2.1 \
     && rm -rf /var/lib/apt/lists/*
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# hadolint ignore=DL3008
 RUN curl -fsSL https://packages.sury.org/php/apt.gpg | apt-key add - \
     && curl -fsSL https://download.newrelic.com/548C16BF.gpg | apt-key add - \
     && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
@@ -67,7 +69,7 @@ RUN curl -fsSL https://packages.sury.org/php/apt.gpg | apt-key add - \
     && rm -rf /var/lib/apt/lists/*
 
 
-ADD conf.d/01_newrelic.ini /etc/php/conf.d/01_newrelic.ini
-ADD conf.d/50_overrides.ini /etc/php/conf.d/50_overrides.ini
+COPY conf.d/01_newrelic.ini /etc/php/conf.d/01_newrelic.ini
+COPY conf.d/50_overrides.ini /etc/php/conf.d/50_overrides.ini
 
 VOLUME /tmp
