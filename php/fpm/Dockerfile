@@ -11,8 +11,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && ln -sf /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm \
     && rm -rf /var/lib/apt/lists/*
 
+ENV PHP_INI_SCAN_DIR=/etc/php/${PHP_VERSION}/fpm/conf.d
+
 COPY conf.d/50_fpm.ini /etc/php/${PHP_VERSION}/conf.d/50_fpm.ini
 COPY php-fpm.conf /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
+COPY conf.d/01_newrelic.ini ${PHP_INI_SCAN_DIR}/01_newrelic.ini
+COPY conf.d/50_overrides.ini ${PHP_INI_SCAN_DIR}/50_overrides.ini
 
 EXPOSE 9000
 
