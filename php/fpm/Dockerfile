@@ -18,7 +18,8 @@ EXPOSE 9000
 
 USER continua
 
-ENV PATH=/app/vendor/bin:$PATH
+ENV PATH=/app/vendor/bin:$PATH \
+    PHP_INI_SCAN_DIR=/etc/php/${PHP_VERSION}/fpm/conf.d
 
 ENV PHP_FPM_PORT=9000 \
     PHP_FPM_MAX_CHILDREN=20 \

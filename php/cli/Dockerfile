@@ -2,6 +2,7 @@ ARG PHP_VERSION=7.2
 FROM srijanlabs/php:${PHP_VERSION}-1.x
 
 ENV PHP_MEMORY_LIMIT=256M
+ENV PHP_INI_SCAN_DIR=/etc/php/${PHP_VERSION}/cli/conf.d
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
