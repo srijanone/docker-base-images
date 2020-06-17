@@ -18,6 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get('extension_dir');")/blackfire.so \
     && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
 
+# @TODO: Fix the concept of PHP_INI_SCAN_DIR.
 COPY conf.d/01_blackfire.ini ${PHP_INI_SCAN_DIR}/01_blackfire.ini
 COPY conf.d/50_dev.ini ${PHP_INI_SCAN_DIR}/50_dev.ini
 COPY conf.d/01_xdebug.ini ${PHP_INI_SCAN_DIR}/01_xdebug.ini
