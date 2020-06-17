@@ -68,8 +68,4 @@ RUN curl -fsSL https://packages.sury.org/php/apt.gpg | apt-key add - \
     newrelic-php5 \
     && rm -rf /var/lib/apt/lists/*
 
-
-COPY conf.d/01_newrelic.ini /etc/php/conf.d/01_newrelic.ini
-COPY conf.d/50_overrides.ini /etc/php/conf.d/50_overrides.ini
-
 VOLUME /tmp

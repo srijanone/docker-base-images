@@ -14,6 +14,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-ins
     && chmod +x /usr/local/bin/composer \
     && rm -rf /var/lib/apt/lists/*
 
+COPY conf.d/01_newrelic.ini ${PHP_INI_SCAN_DIR}/01_newrelic.ini
+COPY conf.d/50_overrides.ini ${PHP_INI_SCAN_DIR}/50_overrides.ini
+
 USER continua
 
 CMD ["bash"]
