@@ -19,8 +19,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
 
 # @TODO: Fix the concept of PHP_INI_SCAN_DIR.
-COPY conf.d/01_blackfire.ini ${PHP_INI_SCAN_DIR}/01_blackfire.ini
-COPY conf.d/50_dev.ini ${PHP_INI_SCAN_DIR}/50_dev.ini
-COPY conf.d/01_xdebug.ini ${PHP_INI_SCAN_DIR}/01_xdebug.ini
+COPY conf.d/01_blackfire.ini ${PHP_INI_DIR}/01_blackfire.ini
+COPY conf.d/50_dev.ini ${PHP_INI_DIR}/50_dev.ini
+COPY conf.d/01_xdebug.ini ${PHP_INI_DIR}/01_xdebug.ini
 
 USER continua
