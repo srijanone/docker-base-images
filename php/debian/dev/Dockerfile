@@ -1,6 +1,6 @@
-ARG IMAGE=srijanlabs/php:7.2-1.x
-# hadolint ignore=DL3006
-FROM ${IMAGE}
+ARG PHP_VERSION=7.2
+ARG BASE_VERSION=10
+FROM srijanlabs/php-fpm:${PHP_VERSION}-${BASE_VERSION}
 
 ARG PHP_VERSION=7.2
 

@@ -1,5 +1,6 @@
 ARG PHP_VERSION=7.2
-FROM srijanlabs/php:${PHP_VERSION}-1.x
+ARG BASE_VERSION=10
+FROM srijanlabs/php:${PHP_VERSION}-${BASE_VERSION}
 ARG PHP_VERSION=7.2
 
 # Expecting latest version

@@ -1,5 +1,6 @@
-ARG PHP_TAG
-FROM srijanlabs/php-fpm:${PHP_TAG}
+ARG PHP_VERSION=7.2
+ARG BASE_VERSION=10
+FROM srijanlabs/php-fpm:${PHP_VERSION}-${BASE_VERSION}
 
 USER root
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
@@ -24,10 +25,12 @@ ENV DOC_ROOT="/app/web" \
     PHP_HOST=localhost
 
 RUN chmod -R 0777 /var/tmp \
+    && mkdir -p /var/run/apache2 \
     && chown -R continua:continua \
         /var/log \
         /var/lib/apache2 \
-        /etc/apache2
+        /etc/apache2 \
+        /var/run/apache2
 
 USER continua
 

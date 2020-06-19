@@ -1,4 +1,5 @@
-FROM srijanlabs/base:1.x
+ARG BASE_VERSION=10
+FROM srijanlabs/debian:${BASE_VERSION}
 
 RUN mkdir /app && \
     chown -R continua:continua /app

@@ -1,4 +1,5 @@
-FROM debian:buster-slim
+ARG DEBIAN_VERSION=10-slim
+FROM debian:${DEBIAN_VERSION}
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl=7.64.0-4+deb10u1 \
