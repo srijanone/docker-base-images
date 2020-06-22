@@ -5,12 +5,13 @@ CMD: start.sh [php-fpm and apache2]
 
 
 Aeguments:
-Name | Defailt value | description
+Name | Default value | description
 ---|---|---|
-PHP_TAG| 
+BASE_VERSION| 10 | debioan version
+PHP_VERSION | 7.2 | php version
 
 Environment variables:
-Name | Defailt value | description
+Name | Default value | description
 ---|---|---|
 DOC_ROOT| /app/web | from where index.php is loaded
 PHP_HOST| localhost | php-fpm server hostname
