@@ -5,8 +5,6 @@ on:
     branches: 
       - dev
   pull_request:
-    paths: 
-      - '**/Dockerfile'
 
 jobs:
   lint:
@@ -24,17 +22,21 @@ jobs:
       run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
     - name: Build base Image
       run: |
-        cd base
+        cd base/debian
         make build
         make push
     - name: Build php images
       run: |
-        cd php
+        cd php/debian
         make build
         make push
     - name: Build apache image
       run: |
-        cd apache
+        cd apache/debian
         make build
         make push
-
+    - name: Build php-fpm-apache image
+      run: |
+        cd php-fpm-apache/debian
+        make build
+        make push
