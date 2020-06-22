@@ -1,5 +1,5 @@
-FROM srijanlabs/base:1.x
-
+ARG BASE_VERSION=10
+FROM srijanlabs/debian:${BASE_VERSION}
 ARG PHP_VERSION=7.2
 
 ENV NEW_RELIC_ENABLED=false
@@ -9,9 +9,6 @@ ENV NEW_RELIC_ENABLED=false
 ENV PHP_MEMORY_LIMIT=128M
 
 ENV SYSLOG_SYMLINK=/mnt/syslog/log
-
-
-ENV MYSQL_CLIENT_VER=1.0.5
 
 ENV PATH "$PATH:/app/bin"
 
@@ -64,8 +61,6 @@ RUN curl -fsSL https://packages.sury.org/php/apt.gpg | apt-key add - \
     php${PHP_VERSION}-zip \
     php${PHP_VERSION}-mysqlnd \
     php${PHP_VERSION}-dev \
-    default-mysql-client-core=${MYSQL_CLIENT_VER} \
+    default-mysql-client-core=1.0.5 \
     newrelic-php5 \
     && rm -rf /var/lib/apt/lists/*
-
-VOLUME /tmp
