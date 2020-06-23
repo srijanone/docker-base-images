@@ -5,13 +5,13 @@ CMD: -
 
 
 Aeguments:
-Name | Defailt value | description
+Name | Default value | description
 ---|---|---|
-BASE_VERSION| 10 | debioan version
+BASE_VERSION| 10 | debian version
 PHP_VERSION | 7.2 | php version
 
 Environment variables:
-Name | Defailt value | description
+Name | Default value | description
 ---|---|---|
 PHP_MEMORY_LIMIT| 128 | php process memory limit
 SYSLOG_SYMLINK | /mnt/syslog/log | TODO
