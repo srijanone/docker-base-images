@@ -119,8 +119,8 @@ jobs:
     # create issue
     - name: Raise issue
       id: raise_issue
-      uses: WSMathias/create-an-issue-anchore@v1
+      uses: WSMathias/create-an-issue-anchore@v1.1
       with:
         reportFilesPattern: ./anchore-reports/scan_*
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.VEGA_BOT_TOKEN }}
