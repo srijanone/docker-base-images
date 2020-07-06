@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openssl=1.1.1d-0+deb10u3 \
     vim=2:8.1.0875-5 \
     gnupg2=2.2.12-1+deb10u1 \
+    ca-certificates=20190110 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -u 1000 continua
