@@ -101,3 +101,16 @@ jobs:
         dockerfile-path: "php-fpm-apache/debian/Dockerfile"
         fail-build: false
         acs-report-enable: true
+    
+    # php-fpm-nginx
+    - name: Build php-fpm-nginx image
+      id: build_php_fpm_nginx
+      run: docker build -f php-fpm-nginx/debian/Dockerfile -t srijanlabs/php-fpm-nginx:latest php-fpm-nginx/debian
+    - name: Scan php-fpm-nginx image
+      id: scan_php_fpm_nginx
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/php-fpm-nginx:latest"
+        dockerfile-path: "php-fpm-nginx/debian/Dockerfile"
+        fail-build: false
+        acs-report-enable: true
