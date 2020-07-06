@@ -39,3 +39,14 @@ jobs:
         cd php-fpm-apache/debian
         make build
         make push
+    - name: Build nginx image
+      run: |
+        cd nginx/debian
+        make build
+        make push
+    - name: Build php-fpm-nginx image
+      run: |
+        cd php-fpm-nginx/debian
+        make build
+        make push
+
