@@ -3,6 +3,9 @@ ARG BASE_VERSION=10
 FROM srijanlabs/php-fpm:${PHP_VERSION}-${BASE_VERSION}
 
 USER root
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 RUN echo "deb http://nginx.org/packages/debian buster nginx" > /etc/apt/sources.list.d/nginx.list \
     && curl -fsSL https://nginx.org/keys/nginx_signing.key |  apt-key add - \
     && DEBIAN_FRONTEND=noninteractive apt-get update \
