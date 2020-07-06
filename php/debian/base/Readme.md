@@ -3,8 +3,7 @@
 ENTRYPOINT: bash
 CMD: -
 
-
-Aeguments:
+Arguments:
 Name | Default value | description
 ---|---|---|
 BASE_VERSION| 10 | debian version
