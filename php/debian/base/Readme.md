@@ -13,6 +13,8 @@ Environment variables:
 Name | Default value | description
 ---|---|---|
 PHP_MEMORY_LIMIT| 128 | php process memory limit
+PHP_UPLOAD_MAX_FILESIZE| 10M | php upload max filesize
+PHP_MAX_EXECUTION_TIME| 180 | php max execution time
 SYSLOG_SYMLINK | /mnt/syslog/log | TODO
 NEW_RELIC_ENABLED | false | newrelic switch
 NEW_RELIC_APP_NAME | not set | newrelic application name

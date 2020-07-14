@@ -4,7 +4,8 @@ FROM srijanlabs/php:${PHP_VERSION}-${BAE_VERSION}
 
 ARG PHP_VERSION=7.2
 
-ENV PHP_MEMORY_LIMIT=256M
+ENV PHP_MEMORY_LIMIT=256M \
+    PHP_MAX_EXECUTION_TIME=300
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 

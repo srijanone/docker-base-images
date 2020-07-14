@@ -13,4 +13,6 @@ Environment variables:
 Name | Default value | description
 ---|---|---|
 PHP_MEMORY_LIMIT| 128 | php process memory limit
+PHP_UPLOAD_MAX_FILESIZE| 10M | php upload max filesize
+PHP_MAX_EXECUTION_TIME| 180 | php max execution time
 PHP_INI_DIR | /etc/php/${PHP_VERSION}/fpm/conf.d | TODO

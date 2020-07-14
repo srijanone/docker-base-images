@@ -12,4 +12,6 @@ PHP_VERSION | 7.2 | php version
 Environment variables:
 Name | Default value | description
 ---|---|---|
-PHP_MEMORY_LIMIT| 128 | php process memory limit
+PHP_MEMORY_LIMIT| 512M | php process memory limit
+PHP_UPLOAD_MAX_FILESIZE| 20M | php upload max filesize
+PHP_MAX_EXECUTION_TIME| 512 | php max execution time
