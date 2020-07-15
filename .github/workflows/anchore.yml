@@ -131,6 +131,21 @@ jobs:
     - name: Move JSON file
       run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm-nginx.json
     
+    # node
+    - name: Build node image
+      id: build_node
+      run: docker build -f node/debian/base/Dockerfile -t srijanlabs/node:latest node/debian
+    - name: Scan node image
+      id: scan_node
+      uses: anchore/scan-action@master
+      with:
+        image-reference: "srijanlabs/node:latest"
+        dockerfile-path: "node/debian/base/Dockerfile"
+        fail-build: false
+        acs-report-enable: true
+    - name: Move JSON file
+      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_node.json
+      
     # create issue
     - name: Raise issue
       id: raise_issue

@@ -49,4 +49,9 @@ jobs:
         cd php-fpm-nginx/debian
         make build
         make push
+    - name: Build node image
+      run: |
+        cd node/debian
+        make build
+        make push
 
