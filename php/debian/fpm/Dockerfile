@@ -12,7 +12,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && ln -sf /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm \
     && rm -rf /var/lib/apt/lists/*
 
-ENV PHP_INI_DIR=/etc/php/${PHP_VERSION}/fpm/conf.d
+ENV PHP_INI_DIR=/etc/php/${PHP_VERSION}/fpm/conf.d \
+    PHP_FPM_REQUEST_TIMEOUT=180
 
 COPY php-fpm.conf /etc/php/${PHP_VERSION}/fpm/php-fpm.conf
 COPY conf.d/50_fpm.ini ${PHP_INI_DIR}/50_fpm.ini

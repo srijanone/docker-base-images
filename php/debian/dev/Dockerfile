@@ -4,6 +4,10 @@ FROM srijanlabs/php-fpm:${PHP_VERSION}-${BASE_VERSION}
 
 ARG PHP_VERSION=7.2
 
+ENV PHP_MEMORY_LIMIT=512M \
+    PHP_UPLOAD_MAX_FILESIZE=20M \
+    PHP_MAX_EXECUTION_TIME=512
+
 USER root
 
 # commands are sfe from word splitting and expecting latest version
