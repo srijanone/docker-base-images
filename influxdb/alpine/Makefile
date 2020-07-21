@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 REGISTRY=srijanlabs/influxdb
-BASE_VERSION=10
+BASE_VERSION=3.9
 
 define build_image
 	# Building influxdb image.
