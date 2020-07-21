@@ -22,6 +22,10 @@ RUN set -ex && \
     cp -a /usr/src/influxdb-*/* /usr/bin/ && \
     rm -rf *.tar.gz* /usr/src /root/.gnupg && \
     apk del .build-deps
+
+
+USER continua
+
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 
 EXPOSE 8086
