@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 REGISTRY=srijanlabs/debian
-DEBIAN_VERSION=10
+DEBIAN_VERSION=buster
 
 build:
 	docker build --build-arg DEBIAN_VERSION=${DEBIAN_VERSION}-slim -t $(REGISTRY):${DEBIAN_VERSION} .

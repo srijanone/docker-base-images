@@ -1,4 +1,4 @@
-ARG DEBIAN_VERSION=10-slim
+ARG DEBIAN_VERSION=buster-slim
 FROM debian:${DEBIAN_VERSION}
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

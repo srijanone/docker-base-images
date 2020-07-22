@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 REGISTRY=srijanlabs/php-fpm-apache
-BASE_VERSION=10
+BASE_VERSION=buster
 
 define build_image
 	# Build production image.

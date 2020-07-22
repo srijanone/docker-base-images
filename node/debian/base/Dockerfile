@@ -1,5 +1,5 @@
-ARG BASE_TAG=10
-FROM srijanlabs/debian:${BASE_TAG}
+ARG BASE_VERSION=buster
+FROM srijanlabs/debian:${BASE_VERSION}}
 
 ARG NODE_VERSION=12.16.0
 
