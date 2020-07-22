@@ -1,4 +1,4 @@
-ARG BASE_VERSION=10
+ARG BASE_VERSION=buster
 
 FROM srijanlabs/debian:${BASE_VERSION}
 

@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 REGISTRY=srijanlabs/nginx
-BASE_VERSION=10
+BASE_VERSION=buster
 
 build:
 	docker build --build-arg BASE_VERSION=${BASE_VERSION} -t $(REGISTRY):${BASE_VERSION} .

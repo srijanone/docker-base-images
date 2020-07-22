@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 REGISTRY=srijanlabs/node
-BASE_VERSION=10
+BASE_VERSION=buster
 
 define build_image
 	# Building production images.
