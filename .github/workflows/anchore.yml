@@ -26,21 +26,6 @@ jobs:
     - name: Move JSON file
       run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_base_debian.json
 
-      # alpine
-    - name: Build alpine image
-      id: build_base_alpine
-      run: docker build -f base/alpine/Dockerfile -t srijanlabs/alpine:latest base/alpine
-    - name: Scan alpine image
-      id: scan_base_alpine
-      uses: anchore/scan-action@master
-      with:
-        image-reference: "srijanlabs/alpine:latest"
-        dockerfile-path: "base/alpine/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_base_alpine.json
-
     # apache
     - name: Build apache image
       id: build_debian_apache
@@ -130,7 +115,7 @@ jobs:
         acs-report-enable: true
     - name: Move JSON file
       run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm-apache.json
-
+    
     # php-fpm-nginx
     - name: Build php-fpm-nginx image
       id: build_php_fpm_nginx
@@ -145,7 +130,7 @@ jobs:
         acs-report-enable: true
     - name: Move JSON file
       run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm-nginx.json
-
+    
     # node
     - name: Build node image
       id: build_node
@@ -160,23 +145,8 @@ jobs:
         acs-report-enable: true
     - name: Move JSON file
       run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_node.json
-
-      # Influxdb
-    - name: Build influxdb image
-      id: build_influxdb
-      run: docker build -f influxdb/alpine/Dockerfile -t srijanlabs/influxdb:latest influxdb/alpine
-    - name: Scan influxdb image
-      id: scan_influxdb
-      uses: anchore/scan-action@master
-      with:
-        image-reference: "srijanlabs/:latest"
-        dockerfile-path: "influxdb/alpine/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_node.json
-
-      # create issue
+      
+    # create issue
     - name: Raise issue
       id: raise_issue
       uses: WSMathias/create-an-issue-anchore@v1.1

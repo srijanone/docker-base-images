@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches:
+    branches: 
       - dev
 
 jobs:
@@ -22,11 +22,6 @@ jobs:
     - name: Build base Image
       run: |
         cd base/debian
-        make build
-        make push
-    - name: Build Alpine base Image
-      run: |
-        cd base/alpine
         make build
         make push
     - name: Build php images
@@ -57,11 +52,6 @@ jobs:
     - name: Build node image
       run: |
         cd node/debian
-        make build
-        make push
-    - name: Build influxdb image
-      run: |
-        cd influxdb/alpine
         make build
         make push
 
