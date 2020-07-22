@@ -3,8 +3,13 @@ FROM srijanlabs/alpine:${BASE_VERSION}
 
 ARG INFLUXDB_VERSION=1.8.1
 
+# Additional keys will be added in future
+# hadolint ignore=SC2043
 RUN set -ex && \
-    apk add --no-cache --virtual .build-deps wget gnupg tar && \
+    apk add --no-cache --virtual .build-deps \
+        wget=1.20.3-r0 \
+        gnupg=2.2.19-r0 \
+        tar=1.32-r0 && \
     for key in \
         05CE15085FC09D18E99EFB22684A14CF2582E0C5 ; \
     do \
@@ -20,7 +25,7 @@ RUN set -ex && \
     rm -f /usr/src/influxdb-*/influxdb.conf && \
     chmod +x /usr/src/influxdb-*/* && \
     cp -a /usr/src/influxdb-*/* /usr/bin/ && \
-    rm -rf *.tar.gz* /usr/src /root/.gnupg && \
+    rm -rf ./*.tar.gz* /usr/src /root/.gnupg && \
     apk del .build-deps
 
 USER continua

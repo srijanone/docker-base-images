@@ -26,7 +26,7 @@ jobs:
     - name: Move JSON file
       run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_base_debian.json
 
-      # alpine
+    # alpine
     - name: Build alpine image
       id: build_base_alpine
       run: docker build -f base/alpine/Dockerfile -t srijanlabs/alpine:latest base/alpine
@@ -161,7 +161,7 @@ jobs:
     - name: Move JSON file
       run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_node.json
 
-      # Influxdb
+    # Influxdb
     - name: Build influxdb image
       id: build_influxdb
       run: docker build -f influxdb/alpine/Dockerfile -t srijanlabs/influxdb:latest influxdb/alpine
@@ -169,14 +169,14 @@ jobs:
       id: scan_influxdb
       uses: anchore/scan-action@master
       with:
-        image-reference: "srijanlabs/:latest"
+        image-reference: "srijanlabs/influxdb:latest"
         dockerfile-path: "influxdb/alpine/Dockerfile"
         fail-build: false
         acs-report-enable: true
     - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_node.json
+      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_alpine_influxdb.json
 
-      # create issue
+    # create issue
     - name: Raise issue
       id: raise_issue
       uses: WSMathias/create-an-issue-anchore@v1.1
