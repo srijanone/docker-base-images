@@ -7,7 +7,12 @@ ARG NODE_VERSION=12.16.0
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008
-RUN buildDeps=('ca-certificates=20190110' 'xz-utils=5.2.4-1' 'gnupg=2.2.12-1+deb10u1' 'git=1:2.20.1-2+deb10u3') \
+RUN buildDeps=( \
+      'ca-certificates=20190110' \
+      'xz-utils=5.2.4-1' \
+      'gnupg=2.2.12-1+deb10u1' \
+      'git=1:2.20.1-2+deb10u3' \
+      'python=2.7.16-1') \
     && ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && case "${dpkgArch##*-}" in \
       amd64) ARCH="x64";; \
@@ -47,8 +52,20 @@ RUN buildDeps=('ca-certificates=20190110' 'xz-utils=5.2.4-1' 'gnupg=2.2.12-1+deb
     && apt-get purge -y --auto-remove "${buildDeps[@]}" \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
+RUN npm i -g node-pre-gyp@~0.15.0
+
 COPY docker-utils/docker-entrypoint.sh /usr/local/bin/
 
+EXPOSE 3000
+
+RUN mkdir /app && \
+    chown -R continua:continua /app
+
+WORKDIR /app
+
+# USER continuas
+
 ENTRYPOINT ["docker-entrypoint.sh"]
+
 
 CMD [ "node" ]

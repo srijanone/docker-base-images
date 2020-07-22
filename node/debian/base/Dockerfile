@@ -51,6 +51,15 @@ RUN buildDeps=('ca-certificates=20190110' 'xz-utils=5.2.4-1' 'gnupg=2.2.12-1+deb
 
 COPY docker-utils/docker-entrypoint.sh /usr/local/bin/
 
+EXPOSE 3000
+
+RUN mkdir /app && \
+    chown -R continua:continua /app
+
+WORKDIR /app
+
+# USER continua
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD [ "node" ]
