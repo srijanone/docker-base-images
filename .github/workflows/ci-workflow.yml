@@ -24,6 +24,11 @@ jobs:
         cd base/debian
         make build
         make push
+    - name: Build Alpine base Image
+      run: |
+        cd base/alpine
+        make build
+        make push
     - name: Build php images
       run: |
         cd php/debian
