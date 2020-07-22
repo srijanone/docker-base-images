@@ -1,5 +1,5 @@
 ARG BASE_VERSION=buster
-FROM srijanlabs/debian:${BASE_VERSION}}
+FROM srijanlabs/debian:${BASE_VERSION}
 
 ARG NODE_VERSION=12.16.0
 
