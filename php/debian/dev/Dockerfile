@@ -20,7 +20,10 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && mkdir -p /tmp/blackfire \
     && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp/blackfire \
     && mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get('extension_dir');")/blackfire.so \
-    && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
+    && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz \
+    && curl -sSL -o mhsendmail -D - -L -s 'https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64' \
+    && chmod +x mhsendmail \
+    && mv mhsendmail /usr/bin/
 
 # @TODO: Fix the concept of PHP_INI_SCAN_DIR.
 COPY conf.d/01_blackfire.ini ${PHP_INI_DIR}/01_blackfire.ini
