@@ -56,7 +56,7 @@ RUN npm i -g node-pre-gyp@~0.15.0
 
 COPY docker-utils/docker-entrypoint.sh /usr/local/bin/
 
-EXPOSE 3000
+EXPOSE 3000 9229
 
 RUN mkdir /app && \
     chown -R continua:continua /app
