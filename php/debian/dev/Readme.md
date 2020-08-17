@@ -15,3 +15,4 @@ Name | Default value | description
 PHP_MEMORY_LIMIT| 512M | php process memory limit
 PHP_UPLOAD_MAX_FILESIZE| 20M | php upload max filesize
 PHP_MAX_EXECUTION_TIME| 512 | php max execution time
+XDEBUG_ENABLE | 0 | Enable php debugger 
