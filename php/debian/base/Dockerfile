@@ -20,9 +20,9 @@ WORKDIR /app
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ca-certificates=20190110 \
+    ca-certificates=20200601~deb10u2 \
     lsb-release=10.2019051400 \
-    apt-transport-https=1.8.2.1 \
+    apt-transport-https=1.8.2.2 \
     && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]

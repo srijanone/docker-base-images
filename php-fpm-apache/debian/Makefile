@@ -19,12 +19,16 @@ define push_image
 endef
 
 build:
-	$(call build_image,7.2)
+	# Deprecating php version 7.2
+	# $ (call build_image,7.2)
+
 	$(call build_image,7.3)
 	$(call build_image,7.4)
 
 push:
-	$(call push_image,7.2)
+	# Deprecating php version 7.2
+	# $ (call build_image,7.2)
+	
 	$(call push_image,7.3)
 	$(call push_image,7.4)
 

@@ -12,7 +12,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
     git=1:2.20.1-2+deb10u3 \
     patch=2.7.6-3+deb10u1 \
-    unzip=6.0-23+deb10u1 \
+    unzip=6.0-23+deb10u2 \
     && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && chmod +x /usr/local/bin/composer \
