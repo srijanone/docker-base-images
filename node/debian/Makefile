@@ -22,10 +22,12 @@ define push_image
 endef
 
 build:
-	$(call build_image,10.21.0,10)
-	$(call build_image,12.18.2,12)
+	$(call build_image,10.23.2,10)
+	$(call build_image,12.20.1,12)
+	$(call build_image,14.15.5,14)
 push:
 	$(call push_image,10)
 	$(call push_image,12)
+	$(call push_image,14)
 
 .PHONY: *

@@ -1,7 +1,7 @@
-ARG BASE_VERSION=3.9
+ARG BASE_VERSION=3.13
 FROM srijanlabs/alpine:${BASE_VERSION}
 
-ARG INFLUXDB_VERSION=1.8.1
+ARG INFLUXDB_VERSION=1.8.4
 
 # Additional keys will be added in future
 # hadolint ignore=SC2043
