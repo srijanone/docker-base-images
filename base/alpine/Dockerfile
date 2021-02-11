@@ -1,4 +1,4 @@
-ARG ALPINE_VERSION=3.9
+ARG ALPINE_VERSION=3.13
 FROM alpine:${ALPINE_VERSION}
 
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
