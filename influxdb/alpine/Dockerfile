@@ -1,15 +1,15 @@
-ARG BASE_VERSION=3.9
+ARG BASE_VERSION=3.13
 FROM srijanlabs/alpine:${BASE_VERSION}
 
-ARG INFLUXDB_VERSION=1.8.1
+ARG INFLUXDB_VERSION=1.8.4
 
 # Additional keys will be added in future
 # hadolint ignore=SC2043
 RUN set -ex && \
     apk add --no-cache --virtual .build-deps \
-        wget=1.20.3-r0 \
-        gnupg=2.2.19-r0 \
-        tar=1.32-r0 && \
+        wget=1.21.1-r1 \
+        gnupg=2.2.27-r0 \
+        tar=1.33-r1 && \
     for key in \
         05CE15085FC09D18E99EFB22684A14CF2582E0C5 ; \
     do \

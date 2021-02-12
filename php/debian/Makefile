@@ -8,7 +8,7 @@ define build_image
 	# Building production images.
 	docker build  --build-arg BASE_VERSION=${BASE_VERSION} --build-arg PHP_VERSION=${1} -t $(REGISTRY):${1}-${BASE_VERSION} base
 	docker build  --build-arg BASE_VERSION=${BASE_VERSION} --build-arg PHP_VERSION=${1} -t $(REGISTRY)-fpm:${1}-${BASE_VERSION} fpm
-	docker build  --build-arg BASE_VERSION=${BASE_VERSION} --build-arg PHP_VERSION=${1} -t $(REGISTRY)-cli:${1}-${BASE_VERSION} cli
+	docker build  --build-arg BASE_VERSION=${BASE_VERSION} --build-arg PHP_VERSION=${1} --build-arg COMPOSER_VERSION=${2} -t $(REGISTRY)-cli:${1}-${BASE_VERSION} cli
 
 	# Building dev images.
 	docker build  --build-arg BASE_VERSION=${BASE_VERSION} --build-arg PHP_VERSION=${1} -t $(REGISTRY)-fpm:${1}-${BASE_VERSION}-dev dev
@@ -27,12 +27,16 @@ define push_image
 endef
 
 build:
-	$(call build_image,7.2)
-	$(call build_image,7.3)
-	$(call build_image,7.4)
+	# Deprecating php version 7.2
+	# $ (call build_image,7.2)
+
+	$(call build_image,7.3,1.10.20)
+	$(call build_image,7.4,1.10.20)
 
 push:
-	$(call push_image,7.2)
+	# Deprecating php version 7.2
+	# $ (call push_image,7.2)
+
 	$(call push_image,7.3)
 	$(call push_image,7.4)
 

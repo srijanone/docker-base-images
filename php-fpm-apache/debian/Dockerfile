@@ -5,7 +5,7 @@ FROM srijanlabs/php-fpm:${PHP_VERSION}-${BASE_VERSION}
 USER root
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        apache2=2.4.38-3+deb10u3 \
+        apache2=2.4.38-3+deb10u4 \
         libapache2-mod-fcgid=1:2.3.9-4 \
     && a2enmod actions \
     && a2enmod proxy \

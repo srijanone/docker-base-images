@@ -1,7 +1,6 @@
 ARG PHP_VERSION=7.2
 ARG BASE_VERSION=buster
 FROM srijanlabs/php:${PHP_VERSION}-${BASE_VERSION}
-ARG PHP_VERSION=7.2
 
 # Expecting latest version
 # hadolint ignore=DL3008
