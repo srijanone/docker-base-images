@@ -21,7 +21,7 @@ COPY conf.d/50_overrides.ini ${PHP_INI_DIR}/50_overrides.ini
 
 EXPOSE 9000
 
-USER continua
+USER kubedrop
 
 ENV PATH=/app/vendor/bin:$PATH
 

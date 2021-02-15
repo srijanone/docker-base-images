@@ -26,12 +26,12 @@ ENV DOC_ROOT="/app/web" \
 
 RUN chmod -R 0777 /var/tmp \
     && mkdir -p /var/run/apache2 \
-    && chown -R continua:continua \
+    && chown -R kubedrop:kubedrop \
         /var/log \
         /var/lib/apache2 \
         /etc/apache2 \
         /var/run/apache2
 
-USER continua
+USER kubedrop
 
 CMD [ "start.sh" ]

@@ -14,7 +14,7 @@ ENV PHP_MEMORY_LIMIT=128M \
 ENV PATH "$PATH:/app/bin"
 
 RUN mkdir /app && \
-    chown -R continua:continua /app
+    chown -R kubedrop:kubedrop /app
 
 WORKDIR /app
 

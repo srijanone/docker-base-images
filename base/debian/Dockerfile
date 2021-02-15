@@ -10,4 +10,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates=20200601~deb10u2 \
     && rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m -u 1000 continua
+RUN useradd -m -u 1000 kubedrop

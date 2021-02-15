@@ -23,6 +23,6 @@ ENV PHP_INI_DIR=/etc/php/${PHP_VERSION}/cli/conf.d
 COPY conf.d/50_overrides.ini ${PHP_INI_DIR}/50_overrides.ini
 COPY conf.d/01_newrelic.ini ${PHP_INI_DIR}/01_newrelic.ini
 
-USER continua
+USER kubedrop
 
 CMD ["bash"]
