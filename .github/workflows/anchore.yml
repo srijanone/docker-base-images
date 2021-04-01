@@ -4,6 +4,9 @@ on:
   # Run every midnight.
   schedule:
     - cron: '0 0 * * *'
+  push:
+    branches:
+      - dev
 
 jobs:
   build:
@@ -17,14 +20,14 @@ jobs:
       run: docker build -f base/debian/Dockerfile -t srijanlabs/debian:latest base/debian
     - name: Scan debian image
       id: scan_base_debian
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/debian:latest"
-        dockerfile-path: "base/debian/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_base_debian.json
+        image: "srijanlabs/debian:latest"
+        # dockerfile-path: "base/debian/Dockerfile"
+        # fail-build: false
+        # acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_base_debian.json
 
     # alpine
     - name: Build alpine image
@@ -32,14 +35,14 @@ jobs:
       run: docker build -f base/alpine/Dockerfile -t srijanlabs/alpine:latest base/alpine
     - name: Scan alpine image
       id: scan_base_alpine
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/alpine:latest"
-        dockerfile-path: "base/alpine/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_base_alpine.json
+        image: "srijanlabs/alpine:latest"
+    #     dockerfile-path: "base/alpine/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_base_alpine.json
 
     # apache
     - name: Build apache image
@@ -47,14 +50,14 @@ jobs:
       run: docker build -f apache/debian/Dockerfile -t srijanlabs/apache:latest apache/debian
     - name: Scan apache image
       id: scan_debian_apache
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/apache:latest"
-        dockerfile-path: "apache/debian/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_apache.json
+        image: "srijanlabs/apache:latest"
+    #     dockerfile-path: "apache/debian/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_apache.json
 
     # php-base
     - name: Build php image
@@ -62,14 +65,14 @@ jobs:
       run: docker build -f php/debian/base/Dockerfile -t srijanlabs/php:latest php/debian/base
     - name: Scan php image
       id: scan_debian_php
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/php:latest"
-        dockerfile-path: "php/debian/base/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php.json
+        image: "srijanlabs/php:latest"
+    #     dockerfile-path: "php/debian/base/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php.json
 
     # php-cli
     - name: Build php-cli image
@@ -77,14 +80,14 @@ jobs:
       run: docker build -f php/debian/cli/Dockerfile -t srijanlabs/php-cli:latest php/debian/cli
     - name: Scan php-cli image
       id: scan_debian_php-cli
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/php-cli:latest"
-        dockerfile-path: "php/debian/cli/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-cli.json
+        image: "srijanlabs/php-cli:latest"
+    #     dockerfile-path: "php/debian/cli/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-cli.json
 
     # php-dev
     - name: Build php-dev image
@@ -92,14 +95,14 @@ jobs:
       run: docker build -f php/debian/dev/Dockerfile -t srijanlabs/php-dev:latest php/debian/dev
     - name: Scan php-dev image
       id: scan_debian_php-dev
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/php-dev:latest"
-        dockerfile-path: "php/debian/dev/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-dev.json
+        image: "srijanlabs/php-dev:latest"
+    #     dockerfile-path: "php/debian/dev/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-dev.json
 
     # php-fpm
     - name: Build php-fpm image
@@ -107,14 +110,14 @@ jobs:
       run: docker build -f php/debian/fpm/Dockerfile -t srijanlabs/php-fpm:latest php/debian/fpm
     - name: Scan php-fpm image
       id: scan_debian_php-fpm
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/php-fpm:latest"
-        dockerfile-path: "php/debian/fpm/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm.json
+        image: "srijanlabs/php-fpm:latest"
+    #     dockerfile-path: "php/debian/fpm/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm.json
 
     # php-fpm-apache
     - name: Build php-fpm-apache image
@@ -122,14 +125,14 @@ jobs:
       run: docker build -f php-fpm-apache/debian/Dockerfile -t srijanlabs/php-fpm-apache:latest php-fpm-apache/debian
     - name: Scan php-fpm-apache image
       id: scan_debian_php-fpm-apache
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/php-fpm-apache:latest"
-        dockerfile-path: "php-fpm-apache/debian/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm-apache.json
+        image: "srijanlabs/php-fpm-apache:latest"
+    #     dockerfile-path: "php-fpm-apache/debian/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm-apache.json
 
     # php-fpm-nginx
     - name: Build php-fpm-nginx image
@@ -137,14 +140,14 @@ jobs:
       run: docker build -f php-fpm-nginx/debian/Dockerfile -t srijanlabs/php-fpm-nginx:latest php-fpm-nginx/debian
     - name: Scan php-fpm-nginx image
       id: scan_php_fpm_nginx
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/php-fpm-nginx:latest"
-        dockerfile-path: "php-fpm-nginx/debian/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm-nginx.json
+        image: "srijanlabs/php-fpm-nginx:latest"
+    #     dockerfile-path: "php-fpm-nginx/debian/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_php-fpm-nginx.json
 
     # node
     - name: Build node image
@@ -152,14 +155,14 @@ jobs:
       run: docker build -f node/debian/base/Dockerfile -t srijanlabs/node:latest node/debian
     - name: Scan node image
       id: scan_node
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/node:latest"
-        dockerfile-path: "node/debian/base/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_node.json
+        image: "srijanlabs/node:latest"
+    #     dockerfile-path: "node/debian/base/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_debian_node.json
 
     # Influxdb
     - name: Build influxdb image
@@ -167,20 +170,20 @@ jobs:
       run: docker build -f influxdb/alpine/Dockerfile -t srijanlabs/influxdb:latest influxdb/alpine
     - name: Scan influxdb image
       id: scan_influxdb
-      uses: anchore/scan-action@master
+      uses: anchore/scan-action@v2
       with:
-        image-reference: "srijanlabs/influxdb:latest"
-        dockerfile-path: "influxdb/alpine/Dockerfile"
-        fail-build: false
-        acs-report-enable: true
-    - name: Move JSON file
-      run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_alpine_influxdb.json
+        image: "srijanlabs/influxdb:latest"
+    #     dockerfile-path: "influxdb/alpine/Dockerfile"
+    #     fail-build: false
+    #     acs-report-enable: true
+    # - name: Move JSON file
+    #   run: mv ./anchore-reports/vulnerabilities.json ./anchore-reports/scan_alpine_influxdb.json
 
     # create issue
-    - name: Raise issue
-      id: raise_issue
-      uses: WSMathias/create-an-issue-anchore@v1.1
-      with:
-        reportFilesPattern: ./anchore-reports/scan_*
-      env:
-        GITHUB_TOKEN: ${{ secrets.VEGA_BOT_TOKEN }}
+    # - name: Raise issue
+    #   id: raise_issue
+    #   uses: WSMathias/create-an-issue-anchore@v1.1
+    #   with:
+    #     reportFilesPattern: ./anchore-reports/scan_*
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.VEGA_BOT_TOKEN }}

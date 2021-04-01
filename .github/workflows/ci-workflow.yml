@@ -1,67 +1,66 @@
-name: Build
+# name: Build
 
-on:
-  push:
-    branches:
-      - dev
+# on:
+#   push:
+#     branches:
+#       - dev
 
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Run hadolint
-        uses: "docker://cdssnc/docker-lint-github-action"
-  build:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
-    steps:
-    - uses: actions/checkout@v2
-    - name: Login to Docker Registry
-      run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-    - name: Build base Image
-      run: |
-        cd base/debian
-        make build
-        make push
-    - name: Build Alpine base Image
-      run: |
-        cd base/alpine
-        make build
-        make push
-    - name: Build php images
-      run: |
-        cd php/debian
-        make build
-        make push
-    - name: Build apache image
-      run: |
-        cd apache/debian
-        make build
-        make push
-    - name: Build php-fpm-apache image
-      run: |
-        cd php-fpm-apache/debian
-        make build
-        make push
-    - name: Build nginx image
-      run: |
-        cd nginx/debian
-        make build
-        make push
-    - name: Build php-fpm-nginx image
-      run: |
-        cd php-fpm-nginx/debian
-        make build
-        make push
-    - name: Build node image
-      run: |
-        cd node/debian
-        make build
-        make push
-    - name: Build influxdb image
-      run: |
-        cd influxdb/alpine
-        make build
-        make push
-
+# jobs:
+#   lint:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - name: Run hadolint
+#         uses: "docker://cdssnc/docker-lint-github-action"
+#   build:
+#     runs-on: ubuntu-latest
+#     if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Login to Docker Registry
+#       run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
+#     - name: Build base Image
+#       run: |
+#         cd base/debian
+#         make build
+#         make push
+#     - name: Build Alpine base Image
+#       run: |
+#         cd base/alpine
+#         make build
+#         make push
+#     - name: Build php images
+#       run: |
+#         cd php/debian
+#         make build
+#         make push
+#     - name: Build apache image
+#       run: |
+#         cd apache/debian
+#         make build
+#         make push
+#     - name: Build php-fpm-apache image
+#       run: |
+#         cd php-fpm-apache/debian
+#         make build
+#         make push
+#     - name: Build nginx image
+#       run: |
+#         cd nginx/debian
+#         make build
+#         make push
+#     - name: Build php-fpm-nginx image
+#       run: |
+#         cd php-fpm-nginx/debian
+#         make build
+#         make push
+#     - name: Build node image
+#       run: |
+#         cd node/debian
+#         make build
+#         make push
+#     - name: Build influxdb image
+#       run: |
+#         cd influxdb/alpine
+#         make build
+#         make push
