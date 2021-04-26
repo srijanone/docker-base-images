@@ -11,6 +11,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && a2enmod proxy \
     && a2enmod rewrite \
     && a2enmod proxy_fcgi \
+    && a2enmod headers \
     && rm -rf /var/lib/apt/lists/*
 
 COPY start.sh /usr/local/bin/start.sh
