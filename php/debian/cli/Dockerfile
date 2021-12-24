@@ -11,9 +11,9 @@ ENV PHP_MEMORY_LIMIT=256M \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
-    git=1:2.20.1-2+deb10u3 \
-    patch=2.7.6-3+deb10u1 \
-    unzip=6.0-23+deb10u2 \
+    git  \
+    patch \
+    unzip \
     && curl -sS https://getcomposer.org/installer -o installer \
     && php installer --version="${COMPOSER_VERSION}" && rm -rf installer \
     && mv composer.phar /usr/local/bin/composer \
@@ -24,6 +24,6 @@ ENV PHP_INI_DIR=/etc/php/${PHP_VERSION}/cli/conf.d
 COPY conf.d/50_overrides.ini ${PHP_INI_DIR}/50_overrides.ini
 COPY conf.d/01_newrelic.ini ${PHP_INI_DIR}/01_newrelic.ini
 
-USER continua
+USER kubedrop
 
 CMD ["bash"]

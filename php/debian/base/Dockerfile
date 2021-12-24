@@ -14,15 +14,14 @@ ENV PHP_MEMORY_LIMIT=128M \
 ENV PATH "$PATH:/app/bin"
 
 RUN mkdir /app && \
-    chown -R continua:continua /app
+    chown -R kubedrop:kubedrop /app
 
 WORKDIR /app
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ca-certificates=20200601~deb10u2 \
-    lsb-release=10.2019051400 \
-    apt-transport-https=1.8.2.2 \
+    lsb-release \
+    apt-transport-https \
     && rm -rf /var/lib/apt/lists/*
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
