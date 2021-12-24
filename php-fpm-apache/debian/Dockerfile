@@ -5,8 +5,8 @@ FROM srijanlabs/php-fpm:${PHP_VERSION}-${BASE_VERSION}
 USER root
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        apache2=2.4.38-3+deb10u4 \
-        libapache2-mod-fcgid=1:2.3.9-4 \
+        apache2 \
+        libapache2-mod-fcgid  \
     && a2enmod actions \
     && a2enmod proxy \
     && a2enmod rewrite \
@@ -27,12 +27,12 @@ ENV DOC_ROOT="/app/web" \
 
 RUN chmod -R 0777 /var/tmp \
     && mkdir -p /var/run/apache2 \
-    && chown -R continua:continua \
+    && chown -R kubedrop:kubedrop \
         /var/log \
         /var/lib/apache2 \
         /etc/apache2 \
         /var/run/apache2
 
-USER continua
+USER kubedrop
 
 CMD [ "start.sh" ]

@@ -2,15 +2,14 @@ ARG BASE_VERSION=buster
 FROM srijanlabs/debian:${BASE_VERSION}
 
 RUN mkdir /app && \
-    chown -R continua:continua /app
+    chown -R kubedrop:kubedrop /app
 
 WORKDIR /app
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    ca-certificates=20200601~deb10u2 \
-    apache2=2.4.38-3+deb10u4 \
-    libapache2-mod-fcgid=1:2.3.9-4 \
+    apache2 \
+    libapache2-mod-fcgid \
     && a2enmod actions \
     && a2enmod proxy \
     && a2enmod rewrite \
@@ -23,12 +22,12 @@ COPY envvars /etc/apache2/envvars
 EXPOSE 8080
 
 RUN mkdir /var/run/apache2 \
-    && chown -R continua:continua /var/run/apache2 \
+    && chown -R kubedrop:kubedrop /var/run/apache2 \
     && chmod -R 0777 /var/tmp \
-    && chown -R continua:continua /var/log \
-    && chown -R continua:continua /etc/apache2 \
-    && chown -R continua:continua /var/lib/apache2
+    && chown -R kubedrop:kubedrop /var/log \
+    && chown -R kubedrop:kubedrop /etc/apache2 \
+    && chown -R kubedrop:kubedrop /var/lib/apache2
 
-USER continua
+USER kubedrop
 
 CMD [ "apache2ctl", "-D", "FOREGROUND"]

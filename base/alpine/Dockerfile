@@ -3,9 +3,9 @@ FROM alpine:${ALPINE_VERSION}
 
 RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
 RUN apk add --no-cache \
-    tzdata=2021a-r0 \
-    bash=5.1.0-r0 \
-    ca-certificates=20191127-r5 && \
+    tzdata  \
+    bash \
+    ca-certificates && \
     update-ca-certificates
 
-RUN adduser -s -S -D continua
+RUN adduser -s -S -D kubedrop
