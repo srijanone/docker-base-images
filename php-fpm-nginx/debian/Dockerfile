@@ -27,7 +27,7 @@ ENV DOC_ROOT="/app/web" \
 
 RUN mkdir /var/run/nginx \
     mkdir -p /var/cache/nginxfastcgi \
-    && chown -R continua:continua \
+    && chown -R kubedrop:kubedrop \
         /var/log \
         /var/cache/nginx \
         /var/run/nginx \
@@ -41,7 +41,7 @@ RUN sed -i -r "s/\/nginx.pid/\/nginx\/nginx.pid/g" /etc/logrotate.d/nginx
 ENV DOC_ROOT="/usr/share/nginx/html" \
     PHP_HOST=localhost
         
-USER continua
+USER kubedrop
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

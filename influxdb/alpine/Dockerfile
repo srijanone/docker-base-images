@@ -28,7 +28,7 @@ RUN set -ex && \
     rm -rf ./*.tar.gz* /usr/src /root/.gnupg && \
     apk del .build-deps
 
-USER continua
+USER kubedrop
 
 COPY influxdb.conf /etc/influxdb/influxdb.conf
 

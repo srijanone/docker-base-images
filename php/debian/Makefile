@@ -29,7 +29,7 @@ define push_image
 endef
 
 build:
-	$(call build_image,7.4,1.9.0)
+	$(call build_image,7.4,2.0.0)
 
 push:
 	$(call push_image,7.4)

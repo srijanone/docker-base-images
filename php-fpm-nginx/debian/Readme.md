@@ -3,12 +3,11 @@
 ENTRYPOINT: bash
 CMD: start.sh [php-fpm and apache2]
 
-
-Aeguments:
+Arguments:
 Name | Default value | description
 ---|---|---|
 BASE_VERSION| 10 | debian version
-PHP_VERSION | 7.2 | php version
+PHP_VERSION | 7.r | php version
 
 Environment variables:
 Name | Default value | description

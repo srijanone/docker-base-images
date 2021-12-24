@@ -2,7 +2,7 @@ ARG BASE_VERSION=buster
 FROM srijanlabs/debian:${BASE_VERSION}
 
 RUN mkdir /app && \
-    chown -R continua:continua /app
+    chown -R kubedrop:kubedrop /app
 
 EXPOSE 8080
 
@@ -24,7 +24,7 @@ RUN sed -i -r "s/\/nginx.pid/\/nginx\/nginx.pid/g" /etc/logrotate.d/nginx
 
 RUN mkdir /var/run/nginx \
     mkdir -p /var/cache/nginxfastcgi \
-    && chown -R continua:continua \
+    && chown -R kubedrop:kubedrop \
         /var/log \
         /var/cache/nginx \
         /var/run/nginx \
@@ -32,6 +32,6 @@ RUN mkdir /var/run/nginx \
         /etc/nginx/conf.d \
         /etc/logrotate.d/nginx
         
-USER continua
+USER kubedrop
 
 CMD [ "nginx"]

@@ -54,11 +54,11 @@ COPY docker-utils/docker-entrypoint.sh /usr/local/bin/
 EXPOSE 3000
 
 RUN mkdir /app && \
-    chown -R continua:continua /app
+    chown -R kubedrop:kubedrop /app
 
 WORKDIR /app
 
-# USER continua
+# USER kubedrop
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
